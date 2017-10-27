@@ -1,0 +1,63 @@
+<html>
+
+
+<body>
+
+<button id="btn"> Click For Dogs</button>
+
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+
+<script>
+function print(obj)
+{
+ var dog=[];
+    var i;
+    for(i in obj.message)
+    {
+        dog.push([i, obj.message[i]]);
+    }
+  document.write('<table border= dotted>');
+  document.write("<tr> <th> Dogs </th> <th> Dog type </th> </tr>");
+  
+        for (var k = 0; k < dog.length; k++)
+         {
+            document.write("<tr>");
+            if(dog[k].length>1)
+            {
+                for(var j = 0; j<dog[k].length;j++)
+                {
+                document.write(" <td>"+ dog[k][j]+"</td> ");
+            }
+            }
+            else{
+     document.write(" <td>"+ dog[k]+"</td> ");
+ }
+           document.write("</tr>");}
+
+}
+
+
+
+$(document).ready(function(){
+    $("button").click(function(){
+        $.ajax({
+          url:"https://dog.ceo/api/breeds/list/all", 
+          success:function(obj){
+            console.log(obj);
+            print(obj);
+          }
+
+        });
+    });
+  });
+</script>
+</body>
+</html>
